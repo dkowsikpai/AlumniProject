@@ -14,8 +14,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -23,16 +23,26 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/asn" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/js/user_auth" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/asn" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/chat/templates/chat" />
       <recent name="$PROJECT_DIR$/chatbox/templates/chat" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/js/user_auth" />
+      <recent name="$PROJECT_DIR$/static/css/user_auth" />
+      <recent name="$PROJECT_DIR$/static/images/user_auth/login" />
+      <recent name="$PROJECT_DIR$/userauth" />
+      <recent name="$PROJECT_DIR$/chat/templates/chat" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -82,7 +92,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1569941084755</updated>
-      <workItem from="1569941099829" duration="4141000" />
+      <workItem from="1569941099829" duration="4734000" />
+      <workItem from="1569988077249" duration="15065000" />
+      <workItem from="1570092100905" duration="4452000" />
+      <workItem from="1570376783907" duration="4739000" />
     </task>
     <servers />
   </component>

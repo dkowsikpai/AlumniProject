@@ -25,7 +25,7 @@ SECRET_KEY = 'zbr3x=7#p8&-2j3sb*@ny4#u99%1-i#90o(qtr!a#i6l-3$$mt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.43.14']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['192.168.43.14']
 INSTALLED_APPS = [
     'channels',
     'chat',
+    'userauth',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'asn.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR+'chat/templates/'],
+        'DIRS': [BASE_DIR+'chat/templates/', BASE_DIR+'userauth/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

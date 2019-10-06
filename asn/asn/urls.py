@@ -20,4 +20,7 @@ from django.conf.urls import include, url
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('chat/', include('chat.urls')),
+    url('user/', include('userauth.urls')),
+    # path('', include('chat.urls'))
+
 ]
