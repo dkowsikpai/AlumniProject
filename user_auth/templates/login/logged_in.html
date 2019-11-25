@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+</head>
+<body>
+{% csrf_token %}
+<input type="button" class="btn btn-primary" onclick="logout()" value="Log Out"/>
+<script>
+    function logout() {
+  var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+   $.ajax({
+                url: '/logout/',
+                type: 'POST',
+                data:{
+                    'csrfmiddlewaretoken':csrftoken,
+                },
+                error: function () {
+                    alert('Could not connect to server...');
+                },
+                success: function(response_ds) {
+                    alert(response_ds);
+                    window.location.href = '/';
+                }
+        	});
+}
+
+</script>
+</body>
+</html>
