@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.wysiwygEditor.css' %}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript" src="{% static 'js/jquery.wysiwygEditor.js' %}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="{% static 'js/mailer/mailer_script.js' %}"></script>
+    
+
+    {% csrf_token %}
+
+    <style>
+        {#    body {#}
+        {#  font-family: 'Open Sans', sans-serif;#}
+        {#  font-weight: 300;#}
+        {#  line-height: 1.6em;#}
+        {# }#}
+        iframe {
+            border: none;
+            outline: none;
+            position: relative;
+        //width: 100%;
+            background: #fff;
+        //padding: 15px;
+        }
+        label {
+            float: left
+        }
+        span {
+            display: block;
+            overflow: hidden;
+            padding: 0 4px 0 6px
+        }
+        input {
+            width: 100%
+        }
+    </style>
+    <div>
+        <div style="margin-top: 2vh">
+            <h3>Email Composer</h3>
+            <hr/>
+        </div>
+        <div style="margin: auto;" class="col-lg-8 col-sm-12 col-md-10">
+            <label for="txtSearch">Email Recepients: </label>
+            <span><input class="form-control" type="text" name="search" id="txtSearch" onkeyup="searchOpen();"/></span>
+        </div>
+        <div class="col-lg-10 col-md-12 col-sm-12" style="margin: 2vh auto auto;">
+{#            <div style="width:500px; height: 100px;" id="composer"></div>#}
+            <textarea style="min-width: auto;" class="wysiwyg-editor form-control" id="postcontented" >{{ data.content }}</textarea><br>
+            <div style="margin: auto; text-align: center;">
+                <button class="btn btn-primary" id="subbtned" onclick="submit_mail();" style="position: absolute;">Submit</button><br><br>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    </script>
+{% endblock content %}

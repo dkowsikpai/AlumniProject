@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')t3g#c@z101=(@8mnr5i$nx11&-scsup87x*c&&b=a&z)d5woc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -32,12 +32,17 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'user_auth',
+    'alu_mailer',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'django_adminlte',
+    # # Optional: Skin for the admin interface
+    # 'django_adminlte_theme',
+    # Any apps which need to have their templates overridden by adminlte
 ]
 
 MIDDLEWARE = [
@@ -55,7 +60,7 @@ ROOT_URLCONF = 'gec.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR+'user_auth/templates'],
+        'DIRS': [BASE_DIR+'user_auth/templates', BASE_DIR+'alu_mailer/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,6 +86,9 @@ DATABASES = {
     }
 }
 
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 1025
+# # python -m smtpd -n -c DebuggingServer localhost:1025
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -124,3 +132,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465 # TLS 587 SSL 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = "anenkona2016@gmail.com"
+EMAIL_HOST_PASSWORD = "anenkona@2016"

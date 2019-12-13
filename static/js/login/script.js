@@ -1,5 +1,5 @@
 // jQuery & Velocity.js
-
+alert('here');
 $(document).on('keypress', function (e) {
   if(e.which == 13){
     // alert('here');

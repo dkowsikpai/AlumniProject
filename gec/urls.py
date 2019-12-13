@@ -21,6 +21,7 @@ from user_auth import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('user_auth.urls')),
+    path('mailer/', include('alu_mailer.urls')),
 ]
 
 urls.handler404 = 'user_auth.views.error_404'

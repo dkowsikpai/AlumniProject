@@ -4,12 +4,9 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('login_auth/', views.auth, name='auth'),
-    path('logged_in/', views.logged_in, name='log'),
-    path('logout/', views.log_out, name='log_out'),
-    path('send/', views.send_email, name='send'),
-
+    path('', views.mailer, name='mailer'),
+    path('search.json', views.autocompleteModel, name='autocomplete-mailer'),
+    path('email_manager', views.mail_sending_manager, name='mailing-manager-mailer'),
 ]
 
 if settings.DEBUG:
