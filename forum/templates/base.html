@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/boot.js' %}"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+
+	<link rel="stylesheet" href='{% static "css/bootstrap.min.css" %}'/>
+	<link rel="stylesheet" href='{% static "css/boot.css" %}'/>
+	<link rel="stylesheet" href='{% static "css/styles.min.css" %}'/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>syscodifier</title>
+</head>
+
+<body class="">
+   <nav class="navbar navbar-dark navbar-expand-md" id="app-navbar">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><i class="icon ion-ios-infinite" id="brand-logo"></i></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">First Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Second Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="">Third Item</a></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+        <div id="main_cont" class="container col-xl-12 col-sm-6 col-lg-8">
+            {% block content %}{% endblock content %}
+        </div>
+
+</body>
+</html>

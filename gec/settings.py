@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'user_auth',
     'alu_mailer',
+    'forum',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'gec.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR+'user_auth/templates', BASE_DIR+'alu_mailer/templates'],
+        'DIRS': [BASE_DIR+'user_auth/templates', BASE_DIR+'alu_mailer/templates', BASE_DIR+'forum/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

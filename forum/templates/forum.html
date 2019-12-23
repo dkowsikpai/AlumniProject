@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <style>
+        .post_container{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin: 10px auto;
+        }
+        .zoom {
+            transition: transform .2s; /* Animation */
+        }
+
+        .zoom:hover {
+            transform: scale(4); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
+    <div class="container">
+        {% csrf_token %}
+        {#        <div class="row">#}
+        {% for i in posts %}
+            <div class="row">
+                <div class="col col-lg-10 col-sm-12 col-md-12 post_container rounded" style="padding: 10px">
+                    <h1>{{ i.title }}</h1><hr>
+                    <p>{{ i.content }}</p>
+                    <a href="{{ i.image1.url }}"><img src="{{ i.image1.url }}" alt="project pic" width="100px" height="60px" class="rounded d-inline zoom"/></a>
+                    {% if i.image2 %}
+                        <a href="{{ i.image2.url }}"><img src="{{ i.image2.url }}" alt="project pic" width="100px" height="60px" class="rounded d-inline zoom"/></a>
+                    {% endif %}
+                    {% if i.image3 %}
+                        <a href="{{ i.image3.url }}"><img src="{{ i.image3.url }}" alt="project pic" width="100px" height="60px" class="rounded d-inline zoom"/></a>
+                    {% endif %}
+                    <button class="btn btn-outline-dark float-right m-1">
+                        {% if i.likes.count > 0 %}
+                            Likes {{ i.likes.count }}
+                        {% else %}
+                            Like
+                        {% endif %}
+                    </button>
+                    <button class="btn btn-outline-dark float-right m-1" onclick="comment_show({{ i.id }})">Comment</button><br/>
+                    <hr>
+                    <img src="{{ i.author.profile.image.url }}" width="50px" class="rounded-circle" alt="user pic"/>
+                    <a href="#" style="text-decoration: none; color: #000; cursor: pointer;">
+                        {{ i.author.first_name }} {{ i.author.last_name }}
+                    </a><br>
+                    <a href=mailto:"{{ i.author.email }}"><small>{{ i.author.email }}</small></a>
+                    <span>
+
+                    </span>
+                </div>
+            </div>
+        {% endfor %}
+        {#        </div>#}
+    </div>
+    <script type="text/javascript">
+        function comment_show(id) {
+            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+            $.ajax({
+                url: '/forum/get_comments/',
+                type: 'POST',
+                data: {
+                    'csrfmiddlewaretoken': csrftoken,
+                    'id': id,
+                },
+                error: function () {
+                    alert('Could not connect to server...');
+                },
+                success: function (response_ds) {
+                    // alert(response_ds);
+                    console.log(response_ds);
+                    console.log(response_ds.length);
+                    for(i of response_ds){
+                        // tomorrow here
+                    }
+                }
+            });
+        }
+    </script>
+{% endblock content %}
