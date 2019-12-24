@@ -11,4 +11,4 @@ class PostDisplayPanel(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentDisplayPanel(admin.ModelAdmin):
-    list_display = ['post', 'content']
+    list_display = ['post', 'content', 'display']

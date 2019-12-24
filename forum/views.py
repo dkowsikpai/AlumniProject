@@ -17,7 +17,7 @@ def get_comments(request):
     db = Comment.objects.filter(post=post).order_by('-id')
     l = []
     for i in db:
-        dic = {'username': i.user.username, 'content': i.content}
+        dic = {'username': i.user.first_name + ' ' + i.user.last_name, 'content': i.content, "id": i.id, "user_pic": i.user.profile.image.url}
         l.append(dic)
     # data = serializers.serialize("json", l)
     return JsonResponse(l, safe=False)

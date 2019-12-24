@@ -1,17 +1,44 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .post_container{
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             margin: 10px auto;
         }
+        .comment_container{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+            margin: 10px auto;
+        }
+
         .zoom {
             transition: transform .2s; /* Animation */
         }
 
         .zoom:hover {
             transform: scale(4); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+        .comment_div{
+            height: 50vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        .display_en{
+            display: block;
+        }
+        .display_dis{
+            display: none;
+        }
+        .text {
+            overflow:hidden;
+
+        }
+        .height {
+            max-height:50px;
+        }
+        .heightAuto {
+            max-height:5000px;
         }
     </style>
     <div class="container">
@@ -21,7 +48,8 @@
             <div class="row">
                 <div class="col col-lg-10 col-sm-12 col-md-12 post_container rounded" style="padding: 10px">
                     <h1>{{ i.title }}</h1><hr>
-                    <p>{{ i.content }}</p>
+                    <p class="text height" id="p_{{ i.id }}">{{ i.content }}</p>
+                    <button class="btn d-block m-auto text-muted" onclick="readmore({{ i.id }})" id="readmore_btn_{{ i.id }}">Read more</button>
                     <a href="{{ i.image1.url }}"><img src="{{ i.image1.url }}" alt="project pic" width="100px" height="60px" class="rounded d-inline zoom"/></a>
                     {% if i.image2 %}
                         <a href="{{ i.image2.url }}"><img src="{{ i.image2.url }}" alt="project pic" width="100px" height="60px" class="rounded d-inline zoom"/></a>
@@ -35,17 +63,18 @@
                         {% else %}
                             Like
                         {% endif %}
-                    </button>
-                    <button class="btn btn-outline-dark float-right m-1" onclick="comment_show({{ i.id }})">Comment</button><br/>
+                    </button><br>
                     <hr>
                     <img src="{{ i.author.profile.image.url }}" width="50px" class="rounded-circle" alt="user pic"/>
                     <a href="#" style="text-decoration: none; color: #000; cursor: pointer;">
                         {{ i.author.first_name }} {{ i.author.last_name }}
                     </a><br>
-                    <a href=mailto:"{{ i.author.email }}"><small>{{ i.author.email }}</small></a>
-                    <span>
+{#                    <a href=mailto:"{{ i.author.email }}"><small>{{ i.author.email }}</small></a>#}
+                    <button class="btn btn-sm d-block m-auto text-muted" onclick="comment_show({{ i.id }})">Comments<br><span id="span_btn_{{ i.id }}" class="fa fa-angle-down"></span></button><br/>
+                    <div id="span_{{ i.id }}" class="comment_div display_dis display_dis comment_container rounded">
 
-                    </span>
+                    </div>
+
                 </div>
             </div>
         {% endfor %}
@@ -53,26 +82,57 @@
     </div>
     <script type="text/javascript">
         function comment_show(id) {
-            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-            $.ajax({
-                url: '/forum/get_comments/',
-                type: 'POST',
-                data: {
-                    'csrfmiddlewaretoken': csrftoken,
-                    'id': id,
-                },
-                error: function () {
-                    alert('Could not connect to server...');
-                },
-                success: function (response_ds) {
-                    // alert(response_ds);
-                    console.log(response_ds);
-                    console.log(response_ds.length);
-                    for(i of response_ds){
-                        // tomorrow here
+            let item = $('#span_'+id.toString()).toggleClass('display_dis');
+            if (!item.hasClass('display_dis')) {
+                $('#span_btn_'+id.toString()).removeClass('fa-angle-down').addClass('fa-angle-up');
+                var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+                $.ajax({
+                    url: '/forum/get_comments/',
+                    type: 'POST',
+                    data: {
+                        'csrfmiddlewaretoken': csrftoken,
+                        'id': id,
+                    },
+                    error: function () {
+                        alert('Could not connect to server...');
+                    },
+                    success: function (response_ds) {
+                        // console.log(response_ds);
+                        // alert(response_ds.length);
+
+                        var htm = Array();
+                        htm.push('<div class="container m-3">');
+                        for (i of response_ds) {
+                            // console.log(i.content);
+                            htm.push("<div class='row m-3'>" +
+                                '<img width="50px" class="rounded-circle" src="' + i.user_pic + '"/>' +
+                                '<small class="m-2"><b>' + i.username + '</b></small><br/>' +
+                                '<p class="m-2">' + i.content + '</p>'
+                                + "</div>")
+                        }
+                        if (response_ds.length === 0){
+                            htm.push('<small class="text-muted">No Comments</small>')
+                        }
+                        htm.push('</div>');
+                        $('#span_' + id.toString()).html(htm.join(''));
                     }
-                }
-            });
+                });
+            } else {
+                $('#span_btn_'+id.toString()).removeClass('fa-angle-up').addClass('fa-angle-down');
+            }
+        }
+
+        function readmore(id) {
+            let r = $('#p_'+id.toString())
+                r.toggleClass("heightAuto");
+            if (r.hasClass('heightAuto')){
+                $('#readmore_btn_'+id.toString()).html('Read Less');
+                // alert('here');
+            } else {
+                $('#readmore_btn_'+id.toString()).html('Read More');
+            }
         }
     </script>
 {% endblock content %}
+
+{#TODO: Connect the Like to DB#}
