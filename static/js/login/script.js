@@ -1,5 +1,5 @@
 // jQuery & Velocity.js
-alert('here');
+// alert('here');
 $(document).on('keypress', function (e) {
   if(e.which == 13){
     // alert('here');
@@ -35,14 +35,14 @@ $("#login-button").on("click", function () {
    submit_data();
   }
   else{
-    shake();
+    //shake();
     submit_data(); // remove Only for testing
   }
 });
 
 function submit_data() {
   var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-   alert($('#password_input').val() + '--' + $('#username_input').val());
+  // alert($('#password_input').val() + '--' + $('#username_input').val());
    $.ajax({
                 url: '/login_auth/',
                 type: 'POST',
@@ -56,7 +56,7 @@ function submit_data() {
                     alert('Could not connect to server...');
                 },
                 success: function(response_ds) {
-                    alert(response_ds);
+                    // alert(response_ds);
                     window.location.href = '/logged_in';
                 }
         	});

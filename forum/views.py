@@ -6,7 +6,7 @@ from django.core import serializers
 
 
 def forum(request):
-    db = Posts.objects.filter(display=True).order_by('-date')
+    db = Posts.objects.filter(display=True).order_by('date')
     content = {'posts': db}
     return render(request, 'forum.html', content)
 
@@ -21,3 +21,31 @@ def get_comments(request):
         l.append(dic)
     # data = serializers.serialize("json", l)
     return JsonResponse(l, safe=False)
+
+
+def submit_like(request):
+    id = request.POST.get('id')
+    user = request.user
+    resp = {}
+    try:
+        post = Posts.objects.get(id=id)
+        post.likes.add(user)
+        post.save()
+        resp = {'is_done': True, 'tot_likes': post.total_likes()}
+    except:
+        resp = {'is_done': False}
+    return JsonResponse(resp, safe=False)
+
+
+def submit_comment(request):
+    id = request.POST.get('id')
+    data = request.POST.get('data')
+    user = request.user
+    try:
+        post = Posts.objects.get(id=id)
+        db = Comment.objects.create(post=post, user=user, content=data)
+        db.save()
+        resp = {'is_done': True}
+    except:
+        resp = {'is_done': False}
+    return JsonResponse(resp, safe=False)

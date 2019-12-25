@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, render_to_response
+from django.shortcuts import render, HttpResponse, render_to_response, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.mail import BadHeaderError, send_mail, EmailMessage
@@ -25,13 +25,13 @@ def auth(request):
 
 @login_required
 def logged_in(request):
-    return render(request, 'login/logged_in.html')
+    return redirect('/forum')
 
 
 @login_required
 def log_out(request):
     logout(request)
-    return HttpResponse('Successfully Logged out')
+    return redirect('/')
 
 
 def error_404(request, *args, **argv):

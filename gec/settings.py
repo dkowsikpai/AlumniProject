@@ -31,9 +31,10 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'user_auth',
-    'alu_mailer',
-    'forum',
+    'user_auth.apps.UserAuthConfig',
+    'alu_mailer.apps.AluMailerConfig',
+    'forum.apps.ForumConfig',
+    'image_optimizer',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -140,3 +141,8 @@ EMAIL_PORT = 465 # TLS 587 SSL 465
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = "anenkona2016@gmail.com"
 EMAIL_HOST_PASSWORD = "anenkona@2016"
+
+OPTIMIZED_IMAGE_METHOD = 'pillow'
+
+LOGIN_URL = "/"
+LOGOUT_URL = '/'

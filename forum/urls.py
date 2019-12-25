@@ -6,6 +6,8 @@ from . import views
 urlpatterns = [
     path('', views.forum, name='forum'),
     path('get_comments/', views.get_comments, name='get-comments'),
+    path('submit_like/', views.submit_like, name='submit-like'),
+    path('submit_comment/', views.submit_comment, name='submit-comment'),
 
 ]
 
