@@ -1,13 +1,16 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.models import User
 import simplejson
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
+@login_required
 def mailer(request):
     return render(request, 'mailer.html')
 
 
+@login_required
 def autocompleteModel(request):
     search_qs = User.objects.filter(username__startswith=request.GET['search'])
     results = []
@@ -17,6 +20,7 @@ def autocompleteModel(request):
     return HttpResponse(resp, content_type='application/json')
 
 
+@login_required
 def mail_sending_manager(request):
     data_email = request.POST['email']
     print(data_email)

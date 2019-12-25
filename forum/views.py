@@ -1,16 +1,19 @@
 from django.shortcuts import render, HttpResponse
 from .models import *
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 from django.core import serializers
 # Create your views here.
 
 
+@login_required
 def forum(request):
     db = Posts.objects.filter(display=True).order_by('date')
     content = {'posts': db}
     return render(request, 'forum.html', content)
 
 
+@login_required
 def get_comments(request):
     id = request.POST.get('id')
     post = Posts.objects.get(id=id)
@@ -23,6 +26,7 @@ def get_comments(request):
     return JsonResponse(l, safe=False)
 
 
+@login_required
 def submit_like(request):
     id = request.POST.get('id')
     user = request.user
@@ -37,6 +41,7 @@ def submit_like(request):
     return JsonResponse(resp, safe=False)
 
 
+@login_required
 def submit_comment(request):
     id = request.POST.get('id')
     data = request.POST.get('data')
