@@ -2,6 +2,8 @@ from django.shortcuts import render, HttpResponse, render_to_response, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.mail import BadHeaderError, send_mail, EmailMessage
+from django.contrib.auth.decorators import login_required
+from .models import *
 # Create your views here.
 from django.template import RequestContext
 
@@ -61,3 +63,9 @@ def send_email(request):
     email = EmailMessage(mail_subject, message, to=[to_email], from_email="dkowsikpai.coder@gmail.com")
     email.send()
     return HttpResponse('success')
+
+
+@login_required
+def profile(request):
+    db = Profile.objects.get(user=request.user)
+    return render(request, 'profile.html', {'data': db})

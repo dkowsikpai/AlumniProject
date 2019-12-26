@@ -5,4 +5,4 @@ from .models import *
 
 @admin.register(Profile)
 class ProfileDisplayPanel(admin.ModelAdmin):
-    list_display = ['user', 'image']
+    list_display = ['user', 'image', 'department', 'batch_year', 'course']
