@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
@@ -9,7 +9,7 @@ urlpatterns = [
     path('logged_in/', views.logged_in, name='log'),
     path('logout/', views.log_out, name='log_out'),
     path('send/', views.send_email, name='send'),
-    path('profile/', views.profile, name='profile'),
+    re_path(r'^profile/(?P<username>\w+)/$', views.profile, name='profile'),
 
 ]
 

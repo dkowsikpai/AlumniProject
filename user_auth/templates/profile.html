@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-        <link href="https://fonts.googleapis.com/css?family=Montserrat|Noto+Sans|Open+Sans|Source+Sans+Pro&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Noto+Sans|Open+Sans|Source+Sans+Pro&display=swap" rel="stylesheet">
     {#{{ data.get_department_display }}#}
     <div class="container-fluid p-0 m-0">
         <div class="row m-2">
@@ -14,19 +13,46 @@
         <div class="row mt-1 ">
             <h3 style="font-family: 'Noto Sans', sans-serif;" class="mx-auto d-block">{{ data.user.first_name }} {{ data.user.last_name }}</h3>
         </div>
-        <div class="row m-2" style="text-align: center">
-            <div class="col-md-4 col-sm-4 col-lg-4 mx-auto d-block" style="border-right: rgba(108,117,125,0.72) 1px solid;">
-                <img class="rounded-circle mx-auto d-block" src="{% static 'images/profile/dept.png' %}" width="100px" height="100px"/><br>
+        <div class="row m-3" style="text-align: center">
+            <div class="col-md-3 col-sm-3 col-lg-3 mx-auto d-block" style="border-right: rgba(108,117,125,0.72) 1px solid;">
+                <img class="rounded-circle mx-auto" src="{% static 'images/profile/dept.png' %}" width="100px" height="100px"/><br>
                 <h3 style="font-family: 'Open Sans', sans-serif;" class="mx-auto d-block">{{ data.get_department_display }}</h3>
             </div>
-            <div class="col-md-4 col-sm-4 col-lg-4 mx-auto d-block" style="border-right: rgba(108,117,125,0.72) 1px solid;">
+            <div class="col-md-3 col-sm-3 col-lg-3 mx-auto d-block" style="border-right: rgba(108,117,125,0.72) 1px solid;">
                 <img class="rounded-circle mx-auto d-block" src="{% static 'images/profile/award.png' %}" width="100px" height="100px"/><br>
                 <h3 style="font-family: 'Open Sans', sans-serif;" class="mx-auto d-block">{{ data.get_course_display }}</h3>
             </div>
-            <div class="col-md-4 col-sm-4 col-lg-4 mx-auto d-block">
-                <img class="rounded-circle mx-auto d-block" src="{% static 'images/profile/edu.png' %}" width="100px" height="100px"/><br>
-                <h3 style="font-family: 'Open Sans', sans-serif;" class="mx-auto d-block">Batch of {{ data.batch_year }}</h3>
-            </div>
+            {% if not data.hide_addr %}
+                {% if data.communication_addr or data.mobile_no %}
+                    <div class="col-md-3 col-sm-3 col-lg-3 mx-auto d-block" style="border-right: rgba(108,117,125,0.72) 1px solid;">
+                        <img class="rounded-circle mx-auto d-block" src="{% static 'images/profile/edu.png' %}" width="100px" height="100px"/><br>
+                        <h3 style="font-family: 'Open Sans', sans-serif;" class="mx-auto d-block">Batch of {{ data.batch_year }}</h3>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-lg-3 mx-auto d-block">
+                        <img class="rounded mx-auto d-block" src="{% static 'images/profile/location.png' %}" width="100px" height="100px"/><br>
+                        {% if data.communication_addr %}
+                            <h3 style="font-family: 'Open Sans', sans-serif;" class="mx-auto d-block">
+                                <img src="{% static 'images/profile/house.png' %}" width="30px" height="30px"/>
+                                {{ data.communication_addr }}
+                            </h3>
+                        {% endif %}
+                        {% if data.mobile_no %}
+                            <h3 style="font-family: 'Open Sans', sans-serif;" class="mx-auto d-block">
+                                <img src="{% static 'images/profile/phone.png' %}" width="30px" height="30px"/>
+                                {{ data.mobile_no }}
+                            </h3>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="col-md-3 col-sm-3 col-lg-3 mx-auto d-block">
+                    <img class="rounded-circle mx-auto d-block" src="{% static 'images/profile/edu.png' %}" width="100px" height="100px"/><br>
+                    <h3 style="font-family: 'Open Sans', sans-serif;" class="mx-auto d-block">Batch of {{ data.batch_year }}</h3>
+                </div>
+            {% endif %}
+        </div>
+        <div class="row">
+
         </div>
     </div>
 {% endblock content %}

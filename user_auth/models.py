@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
-from image_optimizer.fields import OptimizedImageField
+# from image_optimizer.fields import OptimizedImageField
 
 
 import datetime
@@ -39,7 +39,11 @@ course_choice = (
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = OptimizedImageField(default='default.png', upload_to='profile_pics')
+    image = models.ImageField(default='default.png', upload_to='profile_pics')
+    dob = models.DateField(default=datetime.date.today, verbose_name="DOB")
+    communication_addr = models.TextField(verbose_name="Address", blank=True)
+    mobile_no = models.CharField(max_length=15, blank=True)
+    hide_addr = models.BooleanField(default=False, help_text="Hides Address and phone number")
     batch_year = models.IntegerField(default=current_year, verbose_name='Batch Year', help_text='Pass out year')
     department = models.CharField(default="GEN", choices=dept_choice, max_length=100)
     course = models.CharField(default="O", choices=course_choice, max_length=100, help_text="Ongoing")

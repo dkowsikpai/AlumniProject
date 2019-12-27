@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <style>
+        .proj_submit{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin: 10px auto;
+        }
+    </style>
+    <div class="container" >
+        <div class="row m-1">
+            <small class="text-muted">Projects / Register Project /</small>
+        </div>
+        <div class="row mx-auto d-block proj_submit m-2 p-5" style="font-family: 'Source Sans Pro', sans-serif;">
+            <h3>
+                <img src="{% static 'images/projects/add_proj.png' %}" width="30px" height="30px"/>
+                Register Project
+            </h3><hr>
+            <form action="{% url 'reg-project' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <small class="text-muted">Include the three images related to the project</small>
+                <input class="btn btn-primary mx-auto d-block" type="submit" value="Submit"><br>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

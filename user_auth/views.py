@@ -66,6 +66,6 @@ def send_email(request):
 
 
 @login_required
-def profile(request):
-    db = Profile.objects.get(user=request.user)
+def profile(request, username):
+    db = Profile.objects.get(user=User.objects.get(username=username))
     return render(request, 'profile.html', {'data': db})

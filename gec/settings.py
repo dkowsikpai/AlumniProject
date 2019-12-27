@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'user_auth.apps.UserAuthConfig',
     'alu_mailer.apps.AluMailerConfig',
     'forum.apps.ForumConfig',
-    'image_optimizer',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

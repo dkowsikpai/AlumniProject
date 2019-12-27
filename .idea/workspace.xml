@@ -37,8 +37,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
         <option value="HTML File" />
       </list>
     </option>
@@ -64,12 +64,13 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/static/images/profile" />
+      <recent name="$PROJECT_DIR$/static/images/projects" />
       <recent name="$PROJECT_DIR$/static/js" />
       <recent name="$PROJECT_DIR$/media" />
       <recent name="$PROJECT_DIR$/forum/templates" />
-      <recent name="$PROJECT_DIR$/forum" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/forum" />
       <recent name="$PROJECT_DIR$/user_auth/templates" />
       <recent name="$PROJECT_DIR$/static/js/login" />
     </key>
@@ -131,7 +132,9 @@
       <workItem from="1577253233586" duration="19496000" />
       <workItem from="1577353100662" duration="523000" />
       <workItem from="1577353668415" duration="623000" />
-      <workItem from="1577385003165" duration="6852000" />
+      <workItem from="1577385003165" duration="7114000" />
+      <workItem from="1577465841356" duration="3028000" />
+      <workItem from="1577468964402" duration="7904000" />
     </task>
     <servers />
   </component>
@@ -159,10 +162,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="179" y="32" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1577386507742" />
-    <state x="349" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1577385003208">
+    <state x="349" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1577465844305">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="349" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1577385003208" />
+    <state x="349" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1577465844305" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1577389051503">
       <screen x="0" y="27" width="1366" height="741" />
     </state>

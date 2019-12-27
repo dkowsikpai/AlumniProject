@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
-from image_optimizer.fields import OptimizedImageField
+# from image_optimizer.fields import OptimizedImageField
 
 
 class Posts(models.Model):
@@ -10,12 +10,13 @@ class Posts(models.Model):
     subtitle = models.CharField(max_length=500, blank=False, default="Fantastic Project")
     content = models.TextField()
     date = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete = models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
     display = models.BooleanField(default=True)
-    image1 = OptimizedImageField(blank=False, default='default.png', upload_to='projects')
-    image2 = OptimizedImageField(blank=True, upload_to='projects')
-    image3 = OptimizedImageField(blank=True, upload_to='projects')
+    image1 = models.ImageField(blank=False, default='default.png', upload_to='projects')
+    image2 = models.ImageField(blank=True, upload_to='projects')
+    image3 = models.ImageField(blank=True, upload_to='projects')
+    documents = models.FileField(blank=True, upload_to='project_doc')
 
     def __str__(self):
         return self.title
@@ -36,6 +37,4 @@ class Comment(models.Model):
     display = models.BooleanField(default=True)
 
     def __str__(self):
-        return '{}-{}'.format(self.post.title,  str(self.user.username))
-
-
+        return '{}-{}'.format(self.post.title, str(self.user.username))
