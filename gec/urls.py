@@ -23,6 +23,8 @@ urlpatterns = [
     path('', include('user_auth.urls')),
     path('mailer/', include('alu_mailer.urls')),
     path('forum/', include('forum.urls')),
+    path('api/', include('api_manager.urls')),
+
 ]
 
 urls.handler404 = 'user_auth.views.error_404'
