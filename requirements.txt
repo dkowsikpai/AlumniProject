@@ -3,7 +3,7 @@ image_optimizer
 certifi==2019.11.28
 chardet==3.0.4
 dataclasses==0.6
-Django==2.2.7
+Django==2.2.8
 django-adminlte2==0.4.1
 django-adminlte3==0.1.0
 django-crispy-forms==1.8.1
