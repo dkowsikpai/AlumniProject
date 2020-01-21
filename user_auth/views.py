@@ -9,7 +9,10 @@ from django.template import RequestContext
 
 
 def home(request):
-    return render(request, 'login/login_home.html')
+    if not request.user.is_authenticated:
+        return render(request, 'login/login_home.html')
+    else:
+        return render(request, 'login/home.html')
 
 
 def auth(request):

@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -88,21 +88,21 @@ WSGI_APPLICATION = 'gec.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
-     'default': {
-         'ENGINE': 'djongo',
-         'USERNAME': 'asn_manager',
-         'PASSWORD': 'asn_gect@123',
-         'DATABASE': 'asn',
-     }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
+
+# DATABASES = {
+#      'default': {
+#          'ENGINE': 'djongo',
+#          'USERNAME': 'asn_manager',
+#          'PASSWORD': 'asn_gect@123',
+#          'DATABASE': 'asn',
+#      }
+# }
 
 # EMAIL_HOST = 'localhost'
 # EMAIL_PORT = 1025
