@@ -4,6 +4,12 @@
     <div class="container">
         <div class="row mt-2">
             <input class="form-control col-lg-6 col-sm-12 col-md-6 d-block mx-auto" type="text" placeholder="Search" id="search_user">
+            <br>
+            <a href="{% url 'profile' user.username %}" class="btn btn-outline-dark">Profile</a>
+            <a href="{% url 'mailer' %}" class="btn btn-outline-dark">Mailer</a>
+            <a href="{% url 'home' %}" class="btn btn-outline-dark">Home</a>
+            <a href="{% url 'forum' %}" class="btn btn-outline-dark">Forum</a>
+            <a href="{% url 'log_out' %}" class="btn btn-outline-dark">Log out</a>
         </div>
     </div>
 

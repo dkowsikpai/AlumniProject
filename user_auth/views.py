@@ -22,6 +22,7 @@ def auth(request):
     if user is not None:
         login(request, user)
         # Redirect to a success page.
+        # print("here")
         return HttpResponse('Success')
     else:
         # Return an 'invalid login' error message.

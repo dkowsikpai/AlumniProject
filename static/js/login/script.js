@@ -42,10 +42,13 @@ $("#login-button").on("click", function () {
 
 function submit_data() {
   var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+  alert(csrftoken);
   // alert($('#password_input').val() + '--' + $('#username_input').val());
    $.ajax({
                 url: '/login_auth/',
                 type: 'POST',
+                crossOrigin: true,
+                crossDomain: true,
                 data:{
                     'csrfmiddlewaretoken':csrftoken,
                     'password':  $('#password_input').val(),
@@ -57,7 +60,7 @@ function submit_data() {
                 },
                 success: function(response_ds) {
                     // alert(response_ds);
-                    window.location.href = '/logged_in';
+                    window.location.href = '/';
                 }
         	});
 }

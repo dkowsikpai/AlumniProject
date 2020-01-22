@@ -15,6 +15,8 @@
    $.ajax({
                 url: '/logout/',
                 type: 'POST',
+                crossDomain: true,
+                crossOrigin: true,
                 data:{
                     'csrfmiddlewaretoken':csrftoken,
                 },
@@ -23,7 +25,7 @@
                 },
                 success: function(response_ds) {
                     alert(response_ds);
-                    window.location.href = '/';
+                    window.location.href = "/";
                 }
         	});
 }

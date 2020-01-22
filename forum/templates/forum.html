@@ -40,12 +40,19 @@
         }
         .height {
             max-height:50px;
-        }
+        }mx-auto d-block w-100 px-0 col-lg-12 col-sm-12 col-md-12
         .heightAuto {
             max-height:5000px;
         }
     </style>
-    <div class="container-fluid mx-auto d-block w-100 px-0 col-lg-12 col-sm-12 col-md-12" style="width: 100%;">
+
+    <div class="container-fluid">
+        <div class="row m-3">
+            <img src="{% static 'images/bk_btn.png' %}" height="40px" width="40px" class="bk_btn"/>
+        </div>
+    </div>
+
+    <div class="container-fluid mx-auto d-block w-100 px-0 col-lg-12 col-sm-12 col-md-12">
         {% csrf_token %}
         {#        <div class="row">#}
         {% for i in posts %}
