@@ -139,7 +139,7 @@
       <workItem from="1578377656743" duration="8363000" />
       <workItem from="1578389062981" duration="2557000" />
       <workItem from="1579616473171" duration="4531000" />
-      <workItem from="1579664854827" duration="4862000" />
+      <workItem from="1579664854827" duration="6832000" />
     </task>
     <servers />
   </component>
@@ -179,5 +179,16 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1577389051503" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="django-line">
+          <url>file://$PROJECT_DIR$/user_auth/templates/login/login_home.html</url>
+          <line>33</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

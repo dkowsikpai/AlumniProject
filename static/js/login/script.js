@@ -42,7 +42,7 @@ $("#login-button").on("click", function () {
 
 function submit_data() {
   var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-  alert(csrftoken);
+  // alert(csrftoken);
   // alert($('#password_input').val() + '--' + $('#username_input').val());
    $.ajax({
                 url: '/login_auth/',

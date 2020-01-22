@@ -23,10 +23,10 @@ def auth(request):
         login(request, user)
         # Redirect to a success page.
         # print("here")
-        return HttpResponse('Success')
+        return redirect('/')
     else:
         # Return an 'invalid login' error message.
-        return HttpResponse('failed')
+        return redirect('/')
 
 
 @login_required
